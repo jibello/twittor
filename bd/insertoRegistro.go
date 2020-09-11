@@ -2,6 +2,7 @@ package bd
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"github.com/jibello/twittor73/models"
@@ -18,6 +19,7 @@ func InsertoRegistro(u models.Usuario) (string, bool, error) {
 	col := db.Collection("usuarios")
 
 	u.Password, _ = EncriptarPassword(u.Password)
+
 	result, err := col.InsertOne(ctx, u)
 
 	if err != nil {
@@ -25,6 +27,7 @@ func InsertoRegistro(u models.Usuario) (string, bool, error) {
 	}
 
 	ObjID, _ := result.InsertedID.(primitive.ObjectID)
+	fmt.Println("ObjID", ObjID)
 
 	return ObjID.String(), true, nil
 }

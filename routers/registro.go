@@ -14,13 +14,14 @@ func Registro(w http.ResponseWriter, r *http.Request) {
 
 	//El objeto Body (stream) solo se puede leer una vez, luego se destruye.
 	err := json.NewDecoder(r.Body).Decode(&t)
+
 	if err != nil {
 		http.Error(w, "Error en los datos recibidos. "+err.Error(), 400)
 		return
 	}
 
 	if len(t.Email) == 0 {
-		http.Error(w, "El email del usuario es requerido", 400)
+		http.Error(w, "El email del usuario es requerido.", 400)
 		return
 	}
 
@@ -37,6 +38,7 @@ func Registro(w http.ResponseWriter, r *http.Request) {
 	}
 
 	_, status, err := bd.InsertoRegistro(t)
+
 	if err != nil {
 		http.Error(w, "Hubo un problema en el registro del usuario."+err.Error(), 400)
 		return
