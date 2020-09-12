@@ -49,6 +49,8 @@ func Registro(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	http.Error(w, "El usuario "+t.Email+" ha sido creado. ", 200)
+
 	w.WriteHeader(http.StatusCreated)
 
 }
