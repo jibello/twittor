@@ -2,7 +2,6 @@ package bd
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"github.com/jibello/twittor73/models"
@@ -21,10 +20,7 @@ func ChequeoYaExisteUsuario(email string) (models.Usuario, bool, string) {
 
 	var resultado models.Usuario
 
-	fmt.Println("Resultado: ", resultado)
-
 	err := col.FindOne(ctx, condicion).Decode(&resultado)
-	fmt.Println("err", err)
 	ID := resultado.ID.Hex()
 
 	if err != nil {
