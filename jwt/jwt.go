@@ -7,15 +7,19 @@ import (
 	"github.com/jibello/twittor73/models"
 )
 
-/*GeneroJWT genera el encriptado con JWT*/
+/*GeneroJWT genera el encriptado con JWT */
 func GeneroJWT(t models.Usuario) (string, error) {
-	miClave := []byte("MastersdelDessarrolo_grupodeFacebook")
+
+	miClave := []byte("MastersdelDesarrollo_grupodeFacebook")
+
 	payload := jwt.MapClaims{
 		"email":            t.Email,
 		"nombre":           t.Nombre,
 		"apellidos":        t.Apellidos,
 		"fecha_nacimiento": t.FechaNacimiento,
 		"biografia":        t.Biografia,
+		"ubicacion":        t.Ubicacion,
+		"sitioweb":         t.SitioWeb,
 		"_id":              t.ID.Hex(),
 		"exp":              time.Now().Add(time.Hour * 24).Unix(),
 	}
@@ -26,5 +30,4 @@ func GeneroJWT(t models.Usuario) (string, error) {
 		return tokenStr, err
 	}
 	return tokenStr, nil
-
 }

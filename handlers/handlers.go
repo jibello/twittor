@@ -11,7 +11,7 @@ import (
 	"github.com/rs/cors"
 )
 
-/*Manejadores seteo mi puerto, el Handler y pongo a escuchar al servidor*/
+/*Manejadores seteo mi puerto, el Handler y pongo a escuchar al servidor */
 func Manejadores() {
 	router := mux.NewRouter()
 

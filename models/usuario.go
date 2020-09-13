@@ -6,7 +6,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-/*Usuario es el modelo de la base de MongoDB*/
+/*Usuario es el modelo de usuario de la base de MongoDB */
 type Usuario struct {
 	ID              primitive.ObjectID `bson:"_id,omitempty" json:"id"`
 	Nombre          string             `bson:"nombre" json:"nombre,omitempty"`
@@ -18,5 +18,5 @@ type Usuario struct {
 	Banner          string             `bson:"banner" json:"banner,omitempty"`
 	Biografia       string             `bson:"biografia" json:"biografia,omitempty"`
 	Ubicacion       string             `bson:"ubicacion" json:"ubicacion,omitempty"`
-	SitioWeb        string             `bson:"sitioWeb" json:"sitioWeb,omitempty"`
+	SitioWeb        string             `bson:"sitioweb" json:"sitioweb,omitempty"`
 }
