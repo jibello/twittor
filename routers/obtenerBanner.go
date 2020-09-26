@@ -4,18 +4,19 @@ import (
 	"io"
 	"net/http"
 	"os"
+
 	"github.com/jibello/twittor73/bd"
 )
 
 /*ObtenerBanner */
-func ObtenerBanner(w http.ResponseWriter, r *http.Request){
-	
+func ObtenerBanner(w http.ResponseWriter, r *http.Request) {
+
 	ID := r.URL.Query().Get("id")
 	if len(ID) < 1 {
 		http.Error(w, "Debe enviar el parámetro ID", http.StatusBadRequest)
 		return
 	}
-	
+
 	perfil, err := bd.BuscoPerfil(ID)
 	if err != nil {
 		http.Error(w, "Usuario no encontrado!", http.StatusBadRequest)
@@ -23,7 +24,7 @@ func ObtenerBanner(w http.ResponseWriter, r *http.Request){
 	}
 
 	OpenFile, err := os.Open("uploads/banners/" + perfil.Avatar)
-	if err != {
+	if err != nil {
 		http.Error(w, "Imagen no encontrada!", http.StatusBadRequest)
 		return
 	}
